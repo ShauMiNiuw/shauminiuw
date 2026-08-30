@@ -319,16 +319,17 @@ footer {
     }
     
     header {
-        padding: 45px 15px 25px 15px; /* Noch mehr Abstand oben im Handy-Format für die Icons */
-    }
-
-    header h1 {
-        font-size: 1.8rem;
+        padding: 20px 15px 30px 15px;
     }
 
     .theme-switcher {
-        top: 12px;
-        right: 12px;
+        position: static;
+        justify-content: center;
+        margin-bottom: 25px; /* Erzeugt einen sauberen und deutlichen Abstand zwischen Icons und der Überschrift */
+    }
+
+    .header-content h1 {
+        font-size: 1.8rem;
     }
 
     main {

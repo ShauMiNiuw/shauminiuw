@@ -27,8 +27,7 @@
 
     <div class="mobile-menu-container">
         <select id="mobileMenu" onchange="navigateMobile(this.value)">
-            <option value="" disabled selected>Menü</option>
-            <option value="home">Startseite</option>
+            <option value="home" selected>Startseite</option>
             <option value="textures">MC Java Texturpakete</option>
             <option value="about">Über uns</option>
         </select>
@@ -74,6 +73,13 @@
 
         function showContent(page) {
             const main = document.getElementById('mainContent');
+            
+            // Synchronisiert auch das Dropdown-Menü, falls über die PC-Seitenleiste geklickt wird
+            const mobileDropdown = document.getElementById('mobileMenu');
+            if (mobileDropdown) {
+                mobileDropdown.value = page;
+            }
+
             if (page === 'home') {
                 main.innerHTML = `
                     <h2>Willkommen</h2>
