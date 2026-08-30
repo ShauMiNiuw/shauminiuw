@@ -6,6 +6,10 @@
     <title>Shau Mi Niuw</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="style.css">
+    <script>
+        const savedTheme = localStorage.getItem('site_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
 </head>
 <body>
 
@@ -33,8 +37,8 @@
     <div class="container">
         <main id="mainContent">
             <h2>Willkommen</h2>
-            <p>Schön, dass du vorbeischaust! Entdecke neue Ideen, Projekte und Downloads.</p>
-            <p>Wähle rechts im Menü eine Option aus, um zu navigieren.</p>
+            <p>Willkommen auf der offiziellen Plattform für kreative Projekte und Downloads.</p>
+            <p>Wähle im Menü eine Option aus, um zu navigieren.</p>
         </main>
 
         <aside class="desktop-menu">
@@ -54,10 +58,10 @@
                 <p class="footer-desc">Immer auf der Suche nach frischen Ansätzen.</p>
             </div>
             <div class="footer-links">
-                <a href="https://youtube.com" target="_blank" title="YouTube">📺 YouTube</a>
-                <a href="https://discord.com" target="_blank" title="Discord">💬 Discord</a>
-                <a href="https://github.com" target="_blank" title="GitHub">💻 GitHub</a>
-                <a href="https://twitch.tv" target="_blank" title="Twitch">🎮 Twitch</a>
+                <a href="https://youtube.com/@StullenSimi" target="_blank" title="YouTube">📺 YouTube (@StullenSimi)</a>
+                <a href="#" onclick="alert('Discord: StullenSimi'); return false;" title="Discord">💬 Discord (StullenSimi)</a>
+                <span class="footer-info-item" title="Minecraft Java Name">⛏️ MC Java: StullenSimi</span>
+                <span class="footer-info-item" title="Geometry Dash Name">🎮 GD: StullenSimi</span>
             </div>
         </div>
         <div class="footer-bottom">
@@ -66,6 +70,8 @@
     </footer>
 
     <script>
+        let texturesUnlocked = false;
+
         function showContent(page) {
             const main = document.getElementById('mainContent');
             if (page === 'home') {
@@ -82,95 +88,127 @@
                     <p>Dieser Name steht für <strong>Innovation</strong>, <strong>Inspiration</strong> und <strong>Out-of-the-box-Thinking</strong> – also immer wieder frische Ideen und neue Wege abseits des Standard-Ablaufs!</p>
                 `;
             } else if (page === 'textures') {
-                main.innerHTML = `
-                    <h2>Minecraft Java Texturpakete</h2>
-                    <p>Hier steht eine Übersicht aller verfügbaren Texturpakete zum direkten Download bereit:</p>
-                    
-                    <div id="textureList" style="margin-top: 20px;">
-                        
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>New Redstone Lamps (Variante 1)</h3>
-                                <p>Datei: <code>1.NewRedstoneLamps-StullenSimi.zip</code></p>
+                if (!texturesUnlocked) {
+                    main.innerHTML = `
+                        <h2>Minecraft Java Texturpakete</h2>
+                        <div class="password-container">
+                            <p>Dieser Bereich ist geschützt.</p>
+                            <p class="password-hint">Das Passwort findest du auf meinem YT-Kanal (@StullenSimi)!</p>
+                            <div class="password-input-group">
+                                <input type="password" id="accessPassword" placeholder="Passwort eingeben...">
+                                <button onclick="checkPassword()" class="download-btn">Entsperren</button>
                             </div>
-                            <a href="1.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                            <p id="errorMsg" style="color: #ef4444; margin-top: 10px; display: none; font-size: 0.9rem;">Falsches Passwort!</p>
                         </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>New Redstone Lamps (Variante 2)</h3>
-                                <p>Datei: <code>2.NewRedstoneLamps-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="2.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>New Redstone Lamps (Variante 3)</h3>
-                                <p>Datei: <code>3.NewRedstoneLamps-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="3.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>New Redstone Lamps (Variante 4)</h3>
-                                <p>Datei: <code>4.NewRedstoneLamps-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="4.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>New Redstone Lamps (Variante 5)</h3>
-                                <p>Datei: <code>5.NewRedstoneLamps-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="5.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>Apple Hungerbar</h3>
-                                <p>Datei: <code>AppleHungerbar-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="AppleHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>Beetroot Hungerbar</h3>
-                                <p>Datei: <code>BeetrootHungerbar-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="BeetrootHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>Potion Hungerbar</h3>
-                                <p>Datei: <code>PotionHungerbar-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="PotionHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>Slimecraft</h3>
-                                <p>Datei: <code>Slimecraft-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="Slimecraft-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                        <div class="download-box">
-                            <div class="download-info">
-                                <h3>Stew Hungerbar</h3>
-                                <p>Datei: <code>StewHungerbar-StullenSimi.zip</code></p>
-                            </div>
-                            <a href="StewHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
-                        </div>
-
-                    </div>
-                `;
+                    `;
+                } else {
+                    renderTextures();
+                }
             }
+        }
+
+        function checkPassword() {
+            const inputVal = document.getElementById('accessPassword').value;
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if (inputVal === '/code owner') {
+                texturesUnlocked = true;
+                renderTextures();
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function renderTextures() {
+            const main = document.getElementById('mainContent');
+            main.innerHTML = `
+                <h2>Minecraft Java Texturpakete</h2>
+                <p>Hier steht eine Übersicht aller verfügbaren Texturpakete zum direkten Download bereit:</p>
+                
+                <div id="textureList" style="margin-top: 20px;">
+                    
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>New Redstone Lamps (Variante 1)</h3>
+                            <p>Datei: <code>1.NewRedstoneLamps-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="1.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>New Redstone Lamps (Variante 2)</h3>
+                            <p>Datei: <code>2.NewRedstoneLamps-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="2.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>New Redstone Lamps (Variante 3)</h3>
+                            <p>Datei: <code>3.NewRedstoneLamps-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="3.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>New Redstone Lamps (Variante 4)</h3>
+                            <p>Datei: <code>4.NewRedstoneLamps-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="4.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>New Redstone Lamps (Variante 5)</h3>
+                            <p>Datei: <code>5.NewRedstoneLamps-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="5.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>Apple Hungerbar</h3>
+                            <p>Datei: <code>AppleHungerbar-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="AppleHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>Beetroot Hungerbar</h3>
+                            <p>Datei: <code>BeetrootHungerbar-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="BeetrootHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>Potion Hungerbar</h3>
+                            <p>Datei: <code>PotionHungerbar-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="PotionHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>Slimecraft</h3>
+                            <p>Datei: <code>Slimecraft-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="Slimecraft-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                    <div class="download-box">
+                        <div class="download-info">
+                            <h3>Stew Hungerbar</h3>
+                            <p>Datei: <code>StewHungerbar-StullenSimi.zip</code></p>
+                        </div>
+                        <a href="StewHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
+                    </div>
+
+                </div>
+            `;
         }
 
         function navigateMobile(value) {
@@ -179,6 +217,7 @@
 
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('site_theme', theme);
         }
     </script>
 

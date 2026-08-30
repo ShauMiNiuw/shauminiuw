@@ -127,6 +127,39 @@ main h2 {
     color: var(--accent-color);
 }
 
+/* Passwort-Eingabe Bereich */
+.password-container {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.password-hint {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.password-input-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.password-input-group input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--text-secondary);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
 /* Download Box Styling */
 .download-box {
     background: rgba(0, 0, 0, 0.1);
@@ -159,6 +192,8 @@ main h2 {
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
     transition: opacity 0.2s;
     white-space: nowrap;
 }
@@ -211,7 +246,7 @@ aside.desktop-menu ul li a:hover {
     color: white;
 }
 
-/* Footer & Social Media Links */
+/* Footer & Footer-Links */
 footer {
     background-color: var(--primary-color);
     color: white;
@@ -243,16 +278,18 @@ footer {
     flex-wrap: wrap;
 }
 
-.footer-links a {
+.footer-links a, .footer-info-item {
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
     transition: color 0.2s;
+    cursor: default;
 }
 
 .footer-links a:hover {
     color: var(--accent-color);
+    cursor: pointer;
 }
 
 .footer-bottom {
