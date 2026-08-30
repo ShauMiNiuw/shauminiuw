@@ -319,7 +319,7 @@ footer {
     }
     
     header {
-        padding: 25px 15px;
+        padding: 35px 15px 25px 15px; /* Mehr Platz oben geschaffen */
     }
 
     header h1 {
@@ -327,8 +327,8 @@ footer {
     }
 
     .theme-switcher {
-        top: 10px;
-        right: 10px;
+        top: 12px;
+        right: 12px;
     }
 
     main {
