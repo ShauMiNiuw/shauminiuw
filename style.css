@@ -319,7 +319,7 @@ footer {
     }
     
     header {
-        padding: 35px 15px 25px 15px; /* Mehr Platz oben geschaffen */
+        padding: 45px 15px 25px 15px; /* Noch mehr Abstand oben im Handy-Format für die Icons */
     }
 
     header h1 {

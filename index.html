@@ -14,14 +14,14 @@
 <body>
 
     <header>
-        <div class="header-content">
-            <h1>Shau-Mi-Niuw</h1>
-            <p>Innovation, Inspiration & Out-of-the-box-Thinking</p>
-        </div>
         <div class="theme-switcher">
             <button onclick="setTheme('dark')" title="Dark Mode">🌃</button>
             <button onclick="setTheme('light')" title="Light Mode">🏙️</button>
             <button onclick="setTheme('dimmed')" title="Gedimmter Modus">🌁</button>
+        </div>
+        <div class="header-content">
+            <h1>Shau-Mi-Niuw</h1>
+            <p>Innovation, Inspiration & Out-of-the-box-Thinking</p>
         </div>
     </header>
 
@@ -83,9 +83,9 @@
             } else if (page === 'about') {
                 main.innerHTML = `
                     <h2>Über uns</h2>
-                    <p>Der Name <strong>„Shau-Mi-Niuw“</strong> leitet sich lautmalerisch aus dem Englischen <em>„Show me new“</em> ab.</p>
-                    <p>Das bedeutet so viel wie: <strong>„Zeige mir Neues“</strong>.</p>
-                    <p>Dieser Name steht für <strong>Innovation</strong>, <strong>Inspiration</strong> und <strong>Out-of-the-box-Thinking</strong> – also immer wieder frische Ideen und neue Wege abseits des Standard-Ablaufs!</p>
+                    <p>Der Name <strong>„Shau-Mi-Niuw“</strong> leitet sich lautmalerisch aus dem Englischen <em>„Show me new“</em> ab, was übersetzt <strong>„Zeige mir Neues“</strong> bedeutet.</p>
+                    <p>Hinter diesem Projekt steckt weit mehr als nur eine einfache Ansammlung von Downloads. Es ist ein kreativer Rückzugsort und eine Plattform, die gezielt für Innovation, Inspiration und echtes Out-of-the-box-Thinking steht.</p>
+                    <p>Das Hauptziel ist es, etablierte Wege zu hinterfragen, gewohnte Abläufe aufzubrechen und frische, einzigartige Ideen zu entwickeln sowie mit der Community zu teilen. Egal ob im Bereich Game Design, bei der Erstellung individueller Minecraft-Texturpakete oder durch kreative Content-Creation – hier dreht sich alles darum, den Blickwinkel zu erweitern und spannende, neue Projekte zum Leben zu erwecken.</p>
                 `;
             } else if (page === 'textures') {
                 if (!texturesUnlocked) {
