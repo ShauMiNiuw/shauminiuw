@@ -1,29 +1,33 @@
-/* Edles Metall-Silber-Grau Farbkonzept */
+/* Erweitertes Metall-Silber-Grau Farbkonzept mit starkem Kontrast zwischen Dark & Dimmed */
+
+/* 1. DARK MODE: Extrem tiefes, edles Hardware-Anthrazit mit leuchtenden Akzenten */
 :root[data-theme="dark"] {
-    --primary-color: #181b22;       /* Tiefes Metall-Anthrazit */
-    --accent-color: #94a3b8;        /* Edles Platin-Silber */
-    --bg-color: #0f1117;            /* Dunkler Hardware-Hintergrund */
-    --card-bg: #1e222b;             /* Elegante Oberfläche */
-    --text-color: #f1f5f9;          /* Helles Platinweiß */
-    --text-secondary: #9aa4b2;      /* Gedimmtes Silber */
+    --primary-color: #090a0f;       
+    --accent-color: #94a3b8;        
+    --bg-color: #050608;            
+    --card-bg: #13161f;             
+    --text-color: #f8fafc;          
+    --text-secondary: #94a3b8;      
 }
 
+/* 2. LIGHT MODE: Helles, sauberes Platin-Aluminium */
 :root[data-theme="light"] {
-    --primary-color: #334155;       /* Modernes Dunkelgrau */
-    --accent-color: #475569;        /* Dezentes, edles Silber-Grau */
-    --bg-color: #f1f5f9;            /* Helles Aluminium-Silber */
-    --card-bg: #ffffff;             /* Reines Weiß für Karten */
-    --text-color: #1e293b;          /* Dunkler Text für Kontrast */
-    --text-secondary: #64748b;      /* Mittleres Grau */
+    --primary-color: #334155;       
+    --accent-color: #475569;        
+    --bg-color: #f1f5f9;            
+    --card-bg: #ffffff;             
+    --text-color: #1e293b;          
+    --text-secondary: #64748b;      
 }
 
+/* 3. GEDIMMTER MODUS: Deutlich heller, wärmeres, mattes Grau-Blau als klarer Kontrast zum dunklen Dark Mode */
 :root[data-theme="dimmed"] {
-    --primary-color: #272d38;       /* Gedimmtes Anthrazit */
-    --accent-color: #cbd5e1;        /* Sanftes Silber */
-    --bg-color: #1a1e26;            /* Mattes Dunkelgrau */
-    --card-bg: #272d38;             /* Einheitlicher Metall-Look */
-    --text-color: #e2e8f0;          /* Weiches Silber-Weiß */
-    --text-secondary: #a0aec0;      /* Gedimmter Ton */
+    --primary-color: #283040;       
+    --accent-color: #a3b1c2;        
+    --bg-color: #1e232e;            
+    --card-bg: #283040;             
+    --text-color: #ecf0f3;          
+    --text-secondary: #b0bec5;      
 }
 
 body {
@@ -133,6 +137,31 @@ main h2 {
     padding-bottom: 8px;
 }
 
+/* Tutorial Schritte Styling */
+.tutorial-step {
+    background: rgba(0, 0, 0, 0.12);
+    border-left: 4px solid var(--accent-color);
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 20px;
+}
+
+.tutorial-step h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.tutorial-step p, .tutorial-step li {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.tutorial-step ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+
 /* Passwort-Eingabe Bereich */
 .password-container {
     margin-top: 20px;
@@ -192,7 +221,7 @@ main h2 {
 }
 
 .download-btn {
-    background-color: #475569; /* Edler metallischer Button-Ton */
+    background-color: #475569;
     color: white;
     padding: 10px 20px;
     border-radius: 6px;
@@ -287,18 +316,17 @@ footer {
     flex-wrap: wrap;
 }
 
-.footer-links a, .footer-info-item {
+.footer-links a {
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
     transition: color 0.2s;
-    cursor: default;
+    cursor: pointer;
 }
 
 .footer-links a:hover {
     color: var(--text-color);
-    cursor: pointer;
 }
 
 .footer-bottom {

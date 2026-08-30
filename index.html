@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shau-Mi-Niuw</title>
+    <!-- Tab-Icon (Favicon) -->
     <link rel="icon" type="image/png" href="icon.png">
+    <!-- Verknüpfung zur CSS-Datei -->
     <link rel="stylesheet" href="style.css">
+    <!-- Script zum Laden des gespeicherten Themes vor dem Rendern (verhindert Flackern) -->
     <script>
         const savedTheme = localStorage.getItem('site_theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -14,6 +17,7 @@
 <body>
 
     <header>
+        <!-- Theme-Umschalter oben im Header -->
         <div class="theme-switcher">
             <button onclick="setTheme('dark')" title="Dark Mode">🌃</button>
             <button onclick="setTheme('light')" title="Light Mode">🏙️</button>
@@ -25,26 +29,31 @@
         </div>
     </header>
 
+    <!-- Handy Dropdown-Menü -->
     <div class="mobile-menu-container">
         <select id="mobileMenu" onchange="navigateMobile(this.value)">
             <option value="home" selected>Startseite</option>
             <option value="textures">MC Java Texturpakete</option>
+            <option value="coding">Programmieren mit KI</option>
             <option value="about">Über uns</option>
         </select>
     </div>
 
     <div class="container">
+        <!-- Hauptanzeigefläche -->
         <main id="mainContent">
             <h2>Willkommen</h2>
             <p>Willkommen auf der offiziellen Plattform für kreative Projekte und Downloads.</p>
             <p>Wähle im Menü eine Option aus, um zu navigieren.</p>
         </main>
 
+        <!-- PC-Menüleiste rechts -->
         <aside class="desktop-menu">
             <h3>Menü</h3>
             <ul>
                 <li><a href="#" onclick="showContent('home')">Startseite</a></li>
                 <li><a href="#" onclick="showContent('textures')">MC Java Texturpakete</a></li>
+                <li><a href="#" onclick="showContent('coding')">Programmieren mit KI</a></li>
                 <li><a href="#" onclick="showContent('about')">Über uns</a></li>
             </ul>
         </aside>
@@ -56,11 +65,12 @@
                 <h4>Shau-Mi-Niuw</h4>
                 <p class="footer-desc">Immer auf der Suche nach frischen Ansätzen.</p>
             </div>
+            <!-- Exakte Social Media & Gaming Links mit Ziel-Verlinkungen -->
             <div class="footer-links">
                 <a href="https://youtube.com/@StullenSimi" target="_blank" title="YouTube">📺 YouTube (@StullenSimi)</a>
                 <a href="https://discord.com" target="_blank" title="Discord">💬 Discord (StullenSimi)</a>
-                <span class="footer-info-item" title="Minecraft Java Name">⛏️ MC Java: StullenSimi</span>
-                <span class="footer-info-item" title="Geometry Dash Name">🎮 GD: StullenSimi</span>
+                <a href="https://www.minecraft.net" target="_blank" title="Minecraft Java" class="footer-link-btn">⛏️ MC Java: StullenSimi</a>
+                <a href="https://geometrydash.com" target="_blank" title="Geometry Dash" class="footer-link-btn">🎮 GD: StullenSimi</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -68,6 +78,7 @@
         </div>
     </footer>
 
+    <!-- JavaScript für Inhalts-Wechsel, Passwortschutz und Theme-Verwaltung -->
     <script>
         let texturesUnlocked = false;
 
@@ -92,6 +103,41 @@
                     <p>Der Name <strong>„Shau-Mi-Niuw“</strong> leitet sich lautmalerisch aus dem Englischen <em>„Show me new“</em> ab, was übersetzt <strong>„Zeige mir Neues“</strong> bedeutet.</p>
                     <p>Hinter diesem Projekt steckt weit mehr als nur eine einfache Ansammlung von Downloads. Es ist ein kreativer Rückzugsort und eine Plattform, die gezielt für Innovation, Inspiration und echtes Out-of-the-box-Thinking steht.</p>
                     <p>Das Hauptziel ist es, etablierte Wege zu hinterfragen, gewohnte Abläufe aufzubrechen und frische, einzigartige Ideen zu entwickeln sowie mit der Community zu teilen. Egal ob im Bereich Game Design, bei der Erstellung individueller Minecraft-Texturpakete oder durch kreative Content-Creation – hier dreht sich alles darum, den Blickwinkel zu erweitern und spannende, neue Projekte zum Leben zu erwecken.</p>
+                `;
+            } else if (page === 'coding') {
+                main.innerHTML = `
+                    <h2>Programmieren mit KI: Vom Ordner zur ersten Website</h2>
+                    <p>In diesem ausführlichen Schritt-für-Schritt-Tutorial erfährst du, wie du ganz ohne Vorkenntnisse deine eigene Website aufbaust und dabei von Künstlicher Intelligenz unterstützt wirst.</p>
+                    
+                    <div class="tutorial-step">
+                        <h3>Schritt 1: Den Projekt-Ordner erstellen</h3>
+                        <p>Erstelle an einem Ort deiner Wahl (zum Beispiel auf deinem Desktop) einen neuen Ordner. Du kannst ihn komplett frei benennen, zum Beispiel <code>MeineErsteWebsite</code>.</p>
+                    </div>
+
+                    <div class="tutorial-step">
+                        <h3>Schritt 2: Dateien mit dem Windows-Editor anlegen</h3>
+                        <p>Öffne den Windows-Editor (Editor / Notepad) und erstelle darin zwei grundlegende Dateien, die das Fundament jeder modernen Website bilden:</p>
+                        <ul>
+                            <li>Speichere die erste Datei in deinem eben erstellten Ordner unter dem exakten Namen: <code>index.html</code> (Das ist das Gerüst und der Inhalt deiner Seite).</li>
+                            <li>Speichere die zweite Datei ebenfalls in demselben Ordner unter dem Namen: <code>style.css</code> (Das ist das Design, das für Farben, Abstände und das Aussehen zuständig ist).</li>
+                        </ul>
+                    </div>
+
+                    <div class="tutorial-step">
+                        <h3>Schritt 3: Das Website-Icon (Favicon) einbinden</h3>
+                        <p>Nimm dein Grafik- oder Logo-Icon und speichere es ebenfalls im selben Ordner ab. Achte darauf, dass es den Dateinamen <code>icon.png</code> trägt. Dieses Bild wird später oben im Browser-Tab als kleines Logo deiner Website angezeigt.</p>
+                    </div>
+
+                    <div class="tutorial-step">
+                        <h3>Schritt 4: Eine Top-KI zur Unterstützung öffnen</h3>
+                        <p>Öffne nun in deinem Browser eines der führenden KI-Modelle, um dir beim Schreiben des Codes helfen zu lassen:</p>
+                        <ul>
+                            <li><strong>Google Gemini</strong></li>
+                            <li><strong>OpenAI ChatGPT</strong></li>
+                            <li><strong>Anthropic Claude</strong></li>
+                        </ul>
+                        <p style="margin-top: 10px; color: var(--accent-color);"><em>Hinweis: In Kürze ergänzen wir hier konkrete Prompts zum Kopieren sowie eine genaue Anleitung, wie du deine Website kostenlos über GitHub Pages online stellst!</em></p>
+                    </div>
                 `;
             } else if (page === 'textures') {
                 if (!texturesUnlocked) {
@@ -133,6 +179,7 @@
                 
                 <div id="textureList" style="margin-top: 20px;">
                     
+                    <!-- 1. NewRedstoneLamps 1 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 1)</h3>
@@ -141,6 +188,7 @@
                         <a href="1.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- 2. NewRedstoneLamps 2 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 2)</h3>
@@ -149,6 +197,7 @@
                         <a href="2.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- 3. NewRedstoneLamps 3 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 3)</h3>
@@ -157,6 +206,7 @@
                         <a href="3.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- 4. NewRedstoneLamps 4 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 4)</h3>
@@ -165,6 +215,7 @@
                         <a href="4.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- 5. NewRedstoneLamps 5 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 5)</h3>
@@ -173,6 +224,7 @@
                         <a href="5.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- Apple Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Apple Hungerbar</h3>
@@ -181,6 +233,7 @@
                         <a href="AppleHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- Beetroot Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Beetroot Hungerbar</h3>
@@ -189,6 +242,7 @@
                         <a href="BeetrootHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- Potion Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Potion Hungerbar</h3>
@@ -197,6 +251,7 @@
                         <a href="PotionHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- Slimecraft -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Slimecraft</h3>
@@ -205,6 +260,7 @@
                         <a href="Slimecraft-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
 
+                    <!-- Stew Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Stew Hungerbar</h3>
