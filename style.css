@@ -211,7 +211,7 @@ aside.desktop-menu ul li a:hover {
     color: white;
 }
 
-/* Footer */
+/* Footer & Social Media Links */
 footer {
     background-color: var(--primary-color);
     color: white;
@@ -224,12 +224,35 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .footer-desc {
     color: var(--text-secondary);
     margin: 5px 0 0 0;
     font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
 }
 
 .footer-bottom {
@@ -282,5 +305,14 @@ footer {
 
     .download-btn {
         text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
     }
 }
