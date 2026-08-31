@@ -33,6 +33,7 @@
     <div class="mobile-menu-container">
         <select id="mobileMenu" onchange="navigateMobile(this.value)">
             <option value="home" selected>Startseite</option>
+            <option value="quitschingen">Quitschingen</option>
             <option value="textures">MC Java Texturpakete</option>
             <option value="coding">Programmieren mit KI</option>
             <option value="about">Über uns</option>
@@ -52,6 +53,7 @@
             <h3>Menü</h3>
             <ul>
                 <li><a href="#" onclick="showContent('home')">Startseite</a></li>
+                <li><a href="#" onclick="showContent('quitschingen')">Quitschingen</a></li>
                 <li><a href="#" onclick="showContent('textures')">MC Java Texturpakete</a></li>
                 <li><a href="#" onclick="showContent('coding')">Programmieren mit KI</a></li>
                 <li><a href="#" onclick="showContent('about')">Über uns</a></li>
@@ -113,6 +115,21 @@
                     <h2>Willkommen</h2>
                     <p>Willkommen auf der offiziellen Plattform für kreative Projekte und Downloads.</p>
                     <p>Wähle im Menü eine Option aus, um zu navigieren.</p>
+                `;
+            } else if (page === 'quitschingen') {
+                main.innerHTML = `
+                    <h2>Quitschingen</h2>
+                    <p>Quitschingen ist ein Planet – genauer gesagt der Jupiter – eingebettet in ein völlig neu erfundenes Universum namens <strong>Die Spiegelwelt</strong>.</p>
+                    
+                    <div class="tutorial-step">
+                        <h3>Über die Welt</h3>
+                        <p>Hier entsteht der Raum für dieses einzigartige Universum und seine Besonderheiten.</p>
+                    </div>
+
+                    <div class="tutorial-step">
+                        <h3>Die Sprache</h3>
+                        <p>Hier werden später alle Sachen zur Sprache sein.</p>
+                    </div>
                 `;
             } else if (page === 'about') {
                 main.innerHTML = `
