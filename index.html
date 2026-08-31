@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shau-Mi-Niuw</title>
-    <!-- Tab-Icon (Favicon) -->
     <link rel="icon" type="image/png" href="icon.png">
-    <!-- Verknüpfung zur CSS-Datei -->
     <link rel="stylesheet" href="style.css">
-    <!-- Script zum Laden des gespeicherten Themes vor dem Rendern -->
     <script>
         const savedTheme = localStorage.getItem('site_theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -17,26 +14,24 @@
 <body>
 
     <header>
-        <!-- Karton-Button oben links im Header -->
         <div class="box-trigger">
-            <button onclick="toggleIdeaBox()" title="Ideen-Karton öffnen">📦</button>
+            <button onclick="toggleIdeaBox()" title="Ideen-Karton öffnen" aria-label="Ideen-Karton öffnen">📦</button>
         </div>
 
-        <!-- Theme-Umschalter oben rechts im Header -->
         <div class="theme-switcher">
-            <button onclick="setTheme('dark')" title="Dark Mode">🌃</button>
-            <button onclick="setTheme('dimmed')" title="Gedimmter Modus">🌁</button>
-            <button onclick="setTheme('light')" title="Light Mode">🏙️</button>
+            <button onclick="setTheme('dark')" title="Dark Mode" aria-label="Dark Mode">🌃</button>
+            <button onclick="setTheme('dimmed')" title="Gedimmter Modus" aria-label="Gedimmter Modus">🌁</button>
+            <button onclick="setTheme('light')" title="Light Mode" aria-label="Light Mode">🏙️</button>
         </div>
 
         <div class="header-content">
             <h1>Shau-Mi-Niuw</h1>
-            <p>Innovation, Inspiration & Out-of-the-box-Thinking</p>
+            <p>Innovation, Inspiration &amp; Out-of-the-box-Thinking</p>
         </div>
     </header>
 
-    <!-- Handy Dropdown-Menü -->
     <div class="mobile-menu-container">
+        <label for="mobileMenu" class="sr-only">Navigation</label>
         <select id="mobileMenu" onchange="navigateMobile(this.value)">
             <option value="home" selected>Startseite</option>
             <option value="textures">MC Java Texturpakete</option>
@@ -47,36 +42,35 @@
     </div>
 
     <div class="container">
-        <!-- Hauptanzeigefläche -->
         <main id="mainContent">
             <h2>Willkommen</h2>
             <p>Willkommen auf der offiziellen Plattform für kreative Projekte und Downloads.</p>
             <p>Wähle im Menü eine Option aus, um zu navigieren.</p>
         </main>
 
-        <!-- PC-Menüleiste rechts -->
         <aside class="desktop-menu">
             <h3>Menü</h3>
-            <ul>
-                <li><a href="#" onclick="showContent('home')">Startseite</a></li>
-                <li><a href="#" onclick="showContent('textures')">MC Java Texturpakete</a></li>
-                <li><a href="#" onclick="showContent('coding')">Programmieren mit KI</a></li>
-                <li><a href="#" onclick="showContent('quitschingen')">Quitschingen</a></li>
-                <li><a href="#" onclick="showContent('about')">Über uns</a></li>
-            </ul>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showContent('home'); return false;">Startseite</a></li>
+                    <li><a href="#" onclick="showContent('textures'); return false;">MC Java Texturpakete</a></li>
+                    <li><a href="#" onclick="showContent('coding'); return false;">Programmieren mit KI</a></li>
+                    <li><a href="#" onclick="showContent('quitschingen'); return false;">Quitschingen</a></li>
+                    <li><a href="#" onclick="showContent('about'); return false;">Über uns</a></li>
+                </ul>
+            </nav>
         </aside>
     </div>
 
-    <!-- Interaktiver Ideen-Karton Pop-up -->
-    <div id="ideaBoxContainer" class="idea-box-container hidden">
+    <div id="ideaBoxContainer" class="idea-box-container hidden" role="dialog" aria-labelledby="ideaBoxTitle">
         <div class="idea-box-content">
-            <button class="close-box-btn" onclick="toggleIdeaBox()">✖</button>
+            <button class="close-box-btn" onclick="toggleIdeaBox()" aria-label="Schließen">✖</button>
             <div class="box-image-wrapper">
                 <img src="box.png" alt="Karton" class="box-img" onerror="this.style.display='none'; document.getElementById('boxFallbackEmoji').style.display='block';">
                 <span id="boxFallbackEmoji" class="box-fallback-emoji" style="display:none;">📦</span>
             </div>
             <div class="speech-bubble">
-                <span class="bubble-tag">💡 Inspiration aus dem Karton</span>
+                <span id="ideaBoxTitle" class="bubble-tag">💡 Inspiration aus dem Karton</span>
                 <p id="ideaText">Klicke auf den Karton für eine neue Idee!</p>
                 <button onclick="getRandomIdea()" class="next-idea-btn">🎲 Noch ein Spruch</button>
             </div>
@@ -89,12 +83,11 @@
                 <h4>Shau-Mi-Niuw</h4>
                 <p class="footer-desc">Immer auf der Suche nach frischen Ansätzen.</p>
             </div>
-            <!-- Exakte Social Media & Gaming Links -->
             <div class="footer-links">
-                <a href="https://youtube.com/@StullenSimi" target="_blank" title="YouTube">📺 YouTube (@StullenSimi)</a>
-                <a href="https://discord.com" target="_blank" title="Discord">💬 Discord (StullenSimi)</a>
-                <a href="https://www.minecraft.net" target="_blank" title="Minecraft Java" class="footer-link-btn">⛏️ MC Java: StullenSimi</a>
-                <a href="https://geometrydash.com" target="_blank" title="Geometry Dash" class="footer-link-btn">🎮 GD: StullenSimi</a>
+                <a href="https://youtube.com/@StullenSimi" target="_blank" rel="noopener noreferrer" title="YouTube">📺 YouTube (@StullenSimi)</a>
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" title="Discord">💬 Discord (StullenSimi)</a>
+                <a href="https://www.minecraft.net" target="_blank" rel="noopener noreferrer" title="Minecraft Java" class="footer-link-btn">⛏️ MC Java: StullenSimi</a>
+                <a href="https://geometrydash.com" target="_blank" rel="noopener noreferrer" title="Geometry Dash" class="footer-link-btn">🎮 GD: StullenSimi</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -102,11 +95,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         let texturesUnlocked = false;
 
-        // Sammlung von Ideen, Mottos & Motivationen
         const ideas = [
             "Denke nicht in Grenzen, wo noch gar keine gezogen wurden.",
             "Erfolg ist, wenn die eigene Phantasie Realität wird.",
@@ -147,11 +138,11 @@
             navigator.clipboard.writeText(textToCopy).then(() => {
                 const originalText = buttonElement.innerText;
                 buttonElement.innerText = "✅ Kopiert!";
-                buttonElement.style.backgroundColor = "#22c55e";
+                buttonElement.classList.add('copied');
                 
                 setTimeout(() => {
                     buttonElement.innerText = originalText;
-                    buttonElement.style.backgroundColor = "";
+                    buttonElement.classList.remove('copied');
                 }, 2000);
             }).catch(err => {
                 console.error('Fehler beim Kopieren: ', err);
@@ -160,7 +151,6 @@
 
         function showContent(page) {
             const main = document.getElementById('mainContent');
-            
             const mobileDropdown = document.getElementById('mobileMenu');
             if (mobileDropdown) {
                 mobileDropdown.value = page;
@@ -180,10 +170,10 @@
                             <p>Dieser Bereich ist geschützt.</p>
                             <p class="password-hint">Das Passwort findest du auf meinem YT-Kanal (@StullenSimi)!</p>
                             <div class="password-input-group">
-                                <input type="password" id="accessPassword" placeholder="Passwort eingeben...">
+                                <input type="password" id="accessPassword" placeholder="Passwort eingeben..." onkeypress="handlePasswordKeyPress(event)">
                                 <button onclick="checkPassword()" class="download-btn">Entsperren</button>
                             </div>
-                            <p id="errorMsg" style="color: #ef4444; margin-top: 10px; display: none; font-size: 0.9rem;">Falsches Passwort!</p>
+                            <p id="errorMsg" class="error-text">Falsches Passwort!</p>
                         </div>
                     `;
                 } else {
@@ -214,7 +204,7 @@
                     </div>
 
                     <div class="tutorial-step">
-                        <h3>Schritt 4: Standardisierte KI-Prompts nutzen & Code einfügen</h3>
+                        <h3>Schritt 4: Standardisierte KI-Prompts nutzen &amp; Code einfügen</h3>
                         <p>Öffne eine Top-KI (wie <strong>Gemini</strong>, <strong>ChatGPT</strong> oder <strong>Claude</strong>). Kopiere dir einen der folgenden standardisierten Prompts per Klick, passe ihn bei Bedarf an und lass dir den Code erstellen.</p>
                         <p><strong>So fügst du den Code richtig ein:</strong></p>
                         <ul>
@@ -224,13 +214,13 @@
                             <li>Drücke zum Schluss <strong>Strg + S</strong>, um die Datei abzuspeichern.</li>
                         </ul>
                         
-                        <div class="prompt-box" style="margin-top: 15px;">
+                        <div class="prompt-box">
                             <p><strong>Standard-Prompt 1: Allgemeine Website erstellen lassen</strong></p>
                             <code>Erstelle mir den kompletten Code für eine moderne, schicke Website. Ich brauche einmal den Code für die index.html und einmal für die style.css. Die Website soll eine ansprechende Startseite und einen Info-Bereich enthalten. (Optional: Füge hier eigene Wünsche ein, z.B. einen Blog oder eine Projekt-Übersicht). Achte darauf, dass der Code sauber, fehlerfrei und übersichtlich ist, damit ich ihn direkt in meine Dateien kopieren kann.</code>
                             <button onclick="copyPrompt(this)" class="copy-btn">📋 Prompt kopieren</button>
                         </div>
 
-                        <div class="prompt-box" style="margin-top: 15px;">
+                        <div class="prompt-box">
                             <p><strong>Standard-Prompt 2: Bestehenden Code anpassen</strong></p>
                             <code>Hier ist mein aktueller Code meiner index.html und style.css [Füge deinen Code hier ein]. Ich möchte, dass du folgenden Bereich änderst oder hinzufügst: [Beschreibe hier deine Änderung, z.B. eine neue Farbe oder einen neuen Menüpunkt]. Gib mir den kompletten, aktualisierten Code aus.</code>
                             <button onclick="copyPrompt(this)" class="copy-btn">📋 Prompt kopieren</button>
@@ -238,7 +228,7 @@
                     </div>
 
                     <div class="tutorial-step">
-                        <h3>Schritt 5: Lokal testen & verfeinern</h3>
+                        <h3>Schritt 5: Lokal testen &amp; verfeinern</h3>
                         <p>Du kannst deine Website sofort testen, bevor sie online geht:</p>
                         <ul>
                             <li>Mache einen <strong>Doppelklick</strong> auf deine <code>index.html</code>-Datei im Ordner. Sie öffnet sich direkt in deinem Browser.</li>
@@ -251,7 +241,7 @@
                         <h3>Schritt 6: Kostenlos online stellen mit GitHub Pages</h3>
                         <p>Wenn deine Website perfekt ist, bringen wir sie ins Internet:</p>
                         <ul>
-                            <li>Gehe auf <a href="https://github.com" target="_blank" style="color: var(--accent-color);">github.com</a> und erstelle dir einen kostenlosen Account (falls noch nicht geschehen).</li>
+                            <li>Gehe auf <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-highlight">github.com</a> und erstelle dir einen kostenlosen Account (falls noch nicht geschehen).</li>
                             <li>Klicke oben rechts auf das <strong>„+“</strong> Symbol und wähle <strong>„New repository“</strong> (neues Projekt).</li>
                             <li>Gib deinem Repository einen Namen (z.B. <code>meine-erste-website</code>), wähle <strong>Public</strong> (öffentlich) aus und klicke unten auf <strong>„Create repository“</strong>.</li>
                             <li>Klicke auf der folgenden Seite auf den blauen Text <strong>„upload an existing file“</strong>.</li>
@@ -261,7 +251,7 @@
                             <li>Klicke links in der Menüleiste auf <strong>„Pages“</strong>.</li>
                             <li>Unter dem Punkt *Build and deployment* / *Branch* klickst du auf das Menü mit der Aufschrift *None*, änderst es auf <strong>main</strong> und klickst rechts daneben auf <strong>Save</strong>.</li>
                         </ul>
-                        <p style="margin-top: 15px; color: var(--accent-color);"><strong>Herzlichen Glückwunsch – deine erste Website ist fertig und nach wenigen Augenblicken über den dort angezeigten Link weltweit erreichbar!</strong></p>
+                        <p class="congrats-text"><strong>Herzlichen Glückwunsch – deine erste Website ist fertig und nach wenigen Augenblicken über den dort angezeigten Link weltweit erreichbar!</strong></p>
                     </div>
                 `;
             } else if (page === 'quitschingen') {
@@ -289,6 +279,12 @@
             }
         }
 
+        function handlePasswordKeyPress(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        }
+
         function checkPassword() {
             const inputVal = document.getElementById('accessPassword').value;
             const errorMsg = document.getElementById('errorMsg');
@@ -307,7 +303,7 @@
                 <h2>Minecraft Java Texturpakete</h2>
                 <p>Hier steht eine Übersicht aller verfügbaren Texturpakete zum direkten Download bereit:</p>
                 
-                <div id="textureList" style="margin-top: 20px;">
+                <div id="textureList">
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 1)</h3>

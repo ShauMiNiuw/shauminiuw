@@ -1,16 +1,20 @@
-/* Erweitertes Metall-Silber-Grau Farbkonzept */
+/* ==========================================================================
+   Farbkonzepte & Themes
+   ========================================================================== */
 
-/* 1. DARK MODE: Extrem tiefes, edles Hardware-Anthrazit */
+/* 1. DARK MODE: Tiefes Hardware-Anthrazit */
 :root[data-theme="dark"] {
-    --primary-color: #090a0f;       
+    --primary-color: #0f172a;       
     --accent-color: #94a3b8;        
-    --bg-color: #050608;            
+    --bg-color: #090a0f;            
     --card-bg: #13161f;             
     --text-color: #f8fafc;          
     --text-secondary: #94a3b8;      
+    --hover-color: #38bdf8;
+    --border-color: rgba(255, 255, 255, 0.08);
 }
 
-/* 2. LIGHT MODE: Helles, sauberes Platin-Aluminium */
+/* 2. LIGHT MODE: Platin-Aluminium */
 :root[data-theme="light"] {
     --primary-color: #334155;       
     --accent-color: #475569;        
@@ -18,9 +22,11 @@
     --card-bg: #ffffff;             
     --text-color: #1e293b;          
     --text-secondary: #64748b;      
+    --hover-color: #0284c7;
+    --border-color: rgba(0, 0, 0, 0.08);
 }
 
-/* 3. GEDIMMTER MODUS: Deutlich heller, wärmeres, mattes Grau-Blau */
+/* 3. GEDIMMTER MODUS: Mattes Grau-Blau */
 :root[data-theme="dimmed"] {
     --primary-color: #283040;       
     --accent-color: #a3b1c2;        
@@ -28,10 +34,33 @@
     --card-bg: #283040;             
     --text-color: #ecf0f3;          
     --text-secondary: #b0bec5;      
+    --hover-color: #7dd3fc;
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Utility Class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==========================================================================
+   Basis-Layout
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
@@ -39,84 +68,73 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Kopfbereich im metallischen Look mit Verlauf */
+/* Header */
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    color: white;
-    padding: 30px 20px;
+    color: #ffffff;
+    padding: 35px 20px;
     text-align: center;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 header h1 {
-    margin: 0 0 5px 0;
-    font-size: 2.2rem;
+    margin: 0 0 6px 0;
+    font-size: 2.3rem;
     letter-spacing: 0.5px;
+    font-weight: 700;
 }
 
 header p {
     margin: 0;
-    font-size: 1rem;
-    opacity: 0.85;
+    font-size: 1.05rem;
+    opacity: 0.9;
 }
 
-/* Karton Trigger Button oben links */
+/* Header Controls */
 .box-trigger {
     position: absolute;
     top: 15px;
     left: 20px;
 }
 
-.box-trigger button {
+.box-trigger button,
+.theme-switcher button {
     background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    padding: 5px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    padding: 6px 10px;
     cursor: pointer;
     font-size: 1.1rem;
-    transition: background 0.2s, transform 0.1s;
+    color: #ffffff;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.box-trigger button:hover {
+.box-trigger button:hover,
+.theme-switcher button:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
+    transform: translateY(-2px);
 }
 
-/* Theme Switcher oben rechts */
 .theme-switcher {
     position: absolute;
     top: 15px;
     right: 20px;
     display: flex;
-    gap: 5px;
+    gap: 6px;
 }
 
-.theme-switcher button {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    padding: 5px 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background 0.2s, transform 0.1s;
-}
-
-.theme-switcher button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-}
-
-/* Handy Dropdown Menü */
+/* Mobile Dropdown */
 .mobile-menu-container {
     display: none;
     padding: 15px 20px;
     background-color: var(--card-bg);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .mobile-menu-container select {
@@ -127,10 +145,11 @@ header p {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
+    outline: none;
 }
 
-/* Hauptbereich mit Grid-Layout für PC */
+/* Haupt-Container */
 .container {
     display: flex;
     flex: 1;
@@ -139,28 +158,34 @@ header p {
     margin: 30px auto;
     padding: 0 20px;
     gap: 30px;
-    box-sizing: border-box;
 }
 
-/* Inhalt der Seite */
 main {
     flex: 3;
     background: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: background 0.3s;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
 }
 
 main h2 {
     margin-top: 0;
     color: var(--text-color);
     border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 8px;
+    padding-bottom: 10px;
+    font-size: 1.6rem;
 }
 
-/* Interaktive Ideen-Karton Box */
+main p {
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Interaktive Ideen-Karton Box
+   ========================================================================== */
+
 .idea-box-container {
     position: fixed;
     bottom: 25px;
@@ -188,10 +213,10 @@ main h2 {
     gap: 15px;
     background: var(--card-bg);
     border: 2px solid var(--accent-color);
-    padding: 20px;
+    padding: 22px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    max-width: 380px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+    max-width: 390px;
 }
 
 .close-box-btn {
@@ -205,6 +230,7 @@ main h2 {
     cursor: pointer;
     padding: 2px 6px;
     border-radius: 4px;
+    transition: color 0.2s ease, background 0.2s ease;
 }
 
 .close-box-btn:hover {
@@ -247,7 +273,7 @@ main h2 {
 
 .bubble-tag {
     font-size: 0.75rem;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--accent-color);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -264,14 +290,14 @@ main h2 {
 .next-idea-btn {
     align-self: flex-start;
     background: var(--primary-color);
-    color: white;
+    color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    transition: background 0.2s ease, transform 0.1s ease;
     margin-top: 4px;
 }
 
@@ -280,24 +306,28 @@ main h2 {
     color: #0f1117;
 }
 
-/* Tutorial Schritte Styling */
+/* ==========================================================================
+   Tutorial & Content Styling
+   ========================================================================== */
+
 .tutorial-step {
     background: rgba(0, 0, 0, 0.12);
     border-left: 4px solid var(--accent-color);
-    padding: 15px 20px;
-    border-radius: 0 8px 8px 0;
-    margin-top: 20px;
+    padding: 18px 20px;
+    border-radius: 0 10px 10px 0;
+    margin-top: 22px;
 }
 
 .tutorial-step h3 {
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: var(--text-color);
 }
 
-.tutorial-step p, .tutorial-step li {
+.tutorial-step p, 
+.tutorial-step li {
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .tutorial-step ul {
@@ -305,13 +335,12 @@ main h2 {
     padding-left: 20px;
 }
 
-/* Prompt Box für KI Anleitungen */
 .prompt-box {
     background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 6px;
-    margin-top: 10px;
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 15px;
 }
 
 .prompt-box p {
@@ -322,30 +351,29 @@ main h2 {
 
 .prompt-box code {
     display: block;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 12px;
+    border-radius: 6px;
     color: var(--accent-color);
-    font-family: monospace;
+    font-family: 'Consolas', 'Fira Code', monospace;
     font-size: 0.9rem;
     white-space: pre-wrap;
     word-break: break-word;
 }
 
-/* Styling für den "Prompt kopieren"-Button */
 .copy-btn {
     display: block;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 12px;
     background-color: var(--primary-color);
-    color: white;
+    color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: background 0.2s, transform 0.1s;
+    transition: background-color 0.2s ease, transform 0.1s ease;
     text-align: center;
 }
 
@@ -354,13 +382,32 @@ main h2 {
     color: #0f1117;
 }
 
-/* Passwort-Eingabe Bereich */
+.copy-btn.copied {
+    background-color: #22c55e !important;
+    color: #ffffff !important;
+}
+
+.link-highlight {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.congrats-text {
+    margin-top: 18px;
+    color: var(--accent-color);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Passwort & Download Bereich
+   ========================================================================== */
+
 .password-container {
     margin-top: 20px;
     background: rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
     padding: 25px;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .password-hint {
@@ -379,18 +426,30 @@ main h2 {
 .password-input-group input {
     flex: 1;
     min-width: 200px;
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 6px;
     border: 1px solid var(--text-secondary);
     background-color: var(--bg-color);
     color: var(--text-color);
     font-size: 1rem;
+    outline: none;
 }
 
-/* Download Box Styling */
+.error-text {
+    color: #ef4444;
+    margin-top: 12px;
+    display: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#textureList {
+    margin-top: 20px;
+}
+
 .download-box {
     background: rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
     padding: 20px;
     border-radius: 8px;
     margin-top: 15px;
@@ -414,14 +473,14 @@ main h2 {
 
 .download-btn {
     background-color: #475569;
-    color: white;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 6px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    transition: background 0.2s, opacity 0.2s;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
     white-space: nowrap;
 }
 
@@ -430,22 +489,25 @@ main h2 {
     opacity: 0.95;
 }
 
-/* Seitenleiste (Menü rechts) */
+/* ==========================================================================
+   Seitenleiste (Desktop Menü)
+   ========================================================================== */
+
 aside.desktop-menu {
     flex: 1;
     background: var(--card-bg);
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--border-color);
     height: fit-content;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 aside.desktop-menu h3 {
     margin-top: 0;
     color: var(--text-color);
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     border-bottom: 2px solid var(--accent-color);
     padding-bottom: 10px;
 }
@@ -457,7 +519,7 @@ aside.desktop-menu ul {
 }
 
 aside.desktop-menu ul li {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 aside.desktop-menu ul li a {
@@ -465,9 +527,9 @@ aside.desktop-menu ul li a {
     text-decoration: none;
     font-weight: 600;
     display: block;
-    padding: 8px 10px;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 aside.desktop-menu ul li a:hover {
@@ -475,14 +537,17 @@ aside.desktop-menu ul li a:hover {
     color: #0f1117;
 }
 
-/* Footer & Footer-Links */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
 footer {
     background-color: var(--primary-color);
-    color: white;
-    padding: 20px 0;
+    color: #ffffff;
+    padding: 24px 0;
     margin-top: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .footer-content {
@@ -513,8 +578,7 @@ footer {
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
-    transition: color 0.2s;
-    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
@@ -530,7 +594,10 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* --- HANDY-ANPASSUNG (Responsive Design) --- */
+/* ==========================================================================
+   Responsive Design (Handy & Tablet)
+   ========================================================================== */
+
 @media (max-width: 768px) {
     aside.desktop-menu {
         display: none;
@@ -543,7 +610,7 @@ footer {
     .container {
         flex-direction: column;
         margin: 15px auto;
-        padding: 0 10px;
+        padding: 0 12px;
         gap: 15px;
     }
     
