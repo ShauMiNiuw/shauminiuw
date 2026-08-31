@@ -17,11 +17,11 @@
 <body>
 
     <header>
-        <!-- Theme-Umschalter oben im Header -->
+        <!-- Theme-Umschalter oben im Header (Dimm-Button und Light-Button getauscht) -->
         <div class="theme-switcher">
             <button onclick="setTheme('dark')" title="Dark Mode">🌃</button>
-            <button onclick="setTheme('light')" title="Light Mode">🏙️</button>
             <button onclick="setTheme('dimmed')" title="Gedimmter Modus">🌁</button>
+            <button onclick="setTheme('light')" title="Light Mode">🏙️</button>
         </div>
         <div class="header-content">
             <h1>Shau-Mi-Niuw</h1>
@@ -78,14 +78,31 @@
         </div>
     </footer>
 
-    <!-- JavaScript für Inhalts-Wechsel, Passwortschutz und Theme-Verwaltung -->
+    <!-- JavaScript für Inhalts-Wechsel, Passwortschutz, Theme-Verwaltung und Kopier-Funktion -->
     <script>
         let texturesUnlocked = false;
+
+        function copyPrompt(buttonElement) {
+            const codeBlock = buttonElement.previousElementSibling;
+            const textToCopy = codeBlock.innerText;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = buttonElement.innerText;
+                buttonElement.innerText = "✅ Kopiert!";
+                buttonElement.style.backgroundColor = "#22c55e";
+                
+                setTimeout(() => {
+                    buttonElement.innerText = originalText;
+                    buttonElement.style.backgroundColor = "";
+                }, 2000);
+            }).catch(err => {
+                console.error('Fehler beim Kopieren: ', err);
+            });
+        }
 
         function showContent(page) {
             const main = document.getElementById('mainContent');
             
-            // Synchronisiert auch das Dropdown-Menü, falls über die PC-Seitenleiste geklickt wird
             const mobileDropdown = document.getElementById('mobileMenu');
             if (mobileDropdown) {
                 mobileDropdown.value = page;
@@ -111,32 +128,60 @@
                     
                     <div class="tutorial-step">
                         <h3>Schritt 1: Den Projekt-Ordner erstellen</h3>
-                        <p>Erstelle an einem Ort deiner Wahl (zum Beispiel auf deinem Desktop) einen neuen Ordner. Du kannst ihn komplett frei benennen, zum Beispiel <code>MeineErsteWebsite</code>.</p>
+                        <p>Erstelle an einem Ort deiner Wahl (zum Beispiel auf deinem Desktop) einen neuen Ordner. Du kannst ihn frei benennen, zum Beispiel <code>MeineErsteWebsite</code>.</p>
                     </div>
 
                     <div class="tutorial-step">
                         <h3>Schritt 2: Dateien mit dem Windows-Editor anlegen</h3>
-                        <p>Öffne den Windows-Editor (Editor / Notepad) und erstelle darin zwei grundlegende Dateien, die das Fundament jeder modernen Website bilden:</p>
+                        <p>Öffne den Windows-Editor (Editor / Notepad) und erstelle darin zwei grundlegende Dateien:</p>
                         <ul>
-                            <li>Speichere die erste Datei in deinem eben erstellten Ordner unter dem exakten Namen: <code>index.html</code> (Das ist das Gerüst und der Inhalt deiner Seite).</li>
-                            <li>Speichere die zweite Datei ebenfalls in demselben Ordner unter dem Namen: <code>style.css</code> (Das ist das Design, das für Farben, Abstände und das Aussehen zuständig ist).</li>
+                            <li>Speichere die erste Datei in deinem Ordner unter dem exakten Namen: <code>index.html</code> (Das ist das Gerüst und der Inhalt).</li>
+                            <li>Speichere die zweite Datei ebenfalls im selben Ordner unter dem Namen: <code>style.css</code> (Das ist das Design für Farben und Layout).</li>
                         </ul>
                     </div>
 
                     <div class="tutorial-step">
                         <h3>Schritt 3: Das Website-Icon (Favicon) einbinden</h3>
-                        <p>Nimm dein Grafik- oder Logo-Icon und speichere es ebenfalls im selben Ordner ab. Achte darauf, dass es den Dateinamen <code>icon.png</code> trägt. Dieses Bild wird später oben im Browser-Tab als kleines Logo deiner Website angezeigt.</p>
+                        <p>Nimm dein Grafik- oder Logo-Icon und speichere es ebenfalls im selben Ordner ab. Achte darauf, dass es den Dateinamen <code>icon.png</code> trägt. Dieses Bild wird oben im Browser-Tab als Logo angezeigt.</p>
                     </div>
 
                     <div class="tutorial-step">
-                        <h3>Schritt 4: Eine Top-KI zur Unterstützung öffnen</h3>
-                        <p>Öffne nun in deinem Browser eines der führenden KI-Modelle, um dir beim Schreiben des Codes helfen zu lassen:</p>
+                        <h3>Schritt 4: KI-Prompts nutzen & Code einfügen</h3>
+                        <p>Öffne nun eine Top-KI (wie <strong>Gemini</strong>, <strong>ChatGPT</strong> oder <strong>Claude</strong>). Kopiere dir einen der folgenden Prompts per Klick, schicke ihn an die KI und lass dir den Code erstellen.</p>
+                        <p><strong>So fügst du den Code richtig ein:</strong></p>
                         <ul>
-                            <li><strong>Google Gemini</strong></li>
-                            <li><strong>OpenAI ChatGPT</strong></li>
-                            <li><strong>Anthropic Claude</strong></li>
+                            <li>Öffne deine <code>index.html</code> (oder <code>style.css</code>) im Editor.</li>
+                            <li>Drücke auf deiner Tastatur <strong>Strg + A</strong>, um den gesamten eventuell vorhandenen alten Text zu markieren.</li>
+                            <li>Drücke <strong>Strg + V</strong>, um den neuen Code der KI einzufügen.</li>
+                            <li>Drücke zum Schluss <strong>Strg + S</strong>, um die Datei abzuspeichern.</li>
                         </ul>
-                        <p style="margin-top: 10px; color: var(--accent-color);"><em>Hinweis: In Kürze ergänzen wir hier konkrete Prompts zum Kopieren sowie eine genaue Anleitung, wie du deine Website kostenlos über GitHub Pages online stellst!</em></p>
+                        
+                        <div class="prompt-box" style="margin-top: 15px;">
+                            <p><strong>Prompt 1: Komplettes Website-Gerüst erstellen</strong></p>
+                            <code>Erstelle mir den kompletten Code für eine moderne, schicke Website. Ich brauche einmal den Code für die index.html und einmal für die style.css. Die Website soll eine schöne Startseite, einen Info-Bereich und eine Sektion mit Download-Boxen haben. Achte darauf, dass der Code sauber, fehlerfrei und übersichtlich ist, damit ich ihn direkt in meine Dateien kopieren kann.</code>
+                            <button onclick="copyPrompt(this)" class="copy-btn">📋 Prompt kopieren</button>
+                        </div>
+
+                        <div class="prompt-box" style="margin-top: 15px;">
+                            <p><strong>Prompt 2: Bestehenden Code erweitern / anpassen</strong></p>
+                            <code>Hier ist mein aktueller Code meiner index.html und style.css [Füge deinen Code hier ein]. Ich möchte, dass du folgenden Bereich änderst oder hinzufügst: [Beschreibe hier deine Änderung, z.B. einen neuen Button einfügen oder Farben anpassen]. Gib mir den kompletten, aktualisierten Code aus.</code>
+                            <button onclick="copyPrompt(this)" class="copy-btn">📋 Prompt kopieren</button>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-step">
+                        <h3>Schritt 5: Lokal testen & interaktiv anpassen</h3>
+                        <p>Du kannst deine Website sofort testen, ohne sie ins Internet hochzuladen:</p>
+                        <ul>
+                            <li>Mache einfach einen <strong>Doppelklick</strong> auf deine <code>index.html</code>-Datei im Ordner. Sie öffnet sich direkt in deinem Standard-Webbrowser (z. B. Chrome, Edge oder Firefox).</li>
+                            <li>Schau dir an, wie sie aussieht und wirkt.</li>
+                            <li>Wenn dir etwas nicht gefällt oder du etwas umbauen möchtest, geh zurück zur KI, nutze <strong>Prompt 2</strong> und beantrage gezielt weitere Veränderungen!</li>
+                        </ul>
+                    </div>
+
+                    <div class="tutorial-step">
+                        <h3>Schritt 6: Ausblick (Online stellen)</h3>
+                        <p>Wenn deine Website lokal perfekt ist, kannst du sie im Anschluss komplett kostenlos über Dienste wie <strong>GitHub Pages</strong> im Internet veröffentlichen, damit auch andere sie besuchen können!</p>
                     </div>
                 `;
             } else if (page === 'textures') {

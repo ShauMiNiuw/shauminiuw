@@ -1,6 +1,6 @@
-/* Erweitertes Metall-Silber-Grau Farbkonzept mit starkem Kontrast zwischen Dark & Dimmed */
+/* Erweitertes Metall-Silber-Grau Farbkonzept */
 
-/* 1. DARK MODE: Extrem tiefes, edles Hardware-Anthrazit mit leuchtenden Akzenten */
+/* 1. DARK MODE: Extrem tiefes, edles Hardware-Anthrazit */
 :root[data-theme="dark"] {
     --primary-color: #090a0f;       
     --accent-color: #94a3b8;        
@@ -20,7 +20,7 @@
     --text-secondary: #64748b;      
 }
 
-/* 3. GEDIMMTER MODUS: Deutlich heller, wärmeres, mattes Grau-Blau als klarer Kontrast zum dunklen Dark Mode */
+/* 3. GEDIMMTER MODUS: Deutlich heller, wärmeres, mattes Grau-Blau */
 :root[data-theme="dimmed"] {
     --primary-color: #283040;       
     --accent-color: #a3b1c2;        
@@ -160,6 +160,55 @@ main h2 {
 .tutorial-step ul {
     margin: 8px 0 0 0;
     padding-left: 20px;
+}
+
+/* Prompt Box für KI Anleitungen */
+.prompt-box {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.prompt-box p {
+    margin: 0 0 8px 0;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.prompt-box code {
+    display: block;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 4px;
+    color: var(--accent-color);
+    font-family: monospace;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Styling für den "Prompt kopieren"-Button */
+.copy-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.1s;
+    text-align: center;
+}
+
+.copy-btn:hover {
+    background-color: var(--accent-color);
+    color: #0f1117;
 }
 
 /* Passwort-Eingabe Bereich */
@@ -356,13 +405,12 @@ footer {
     }
     
     header {
-        /* VIEL FREIRAUM OBEN DAMIT DIE ICONS GARantiert NICHT KOLLABIEREN */
         padding: 70px 15px 30px 15px; 
     }
 
     .theme-switcher {
         position: absolute;
-        top: 20px; /* Deutlich weiter nach oben gesetzt */
+        top: 20px; 
         right: 0;
         left: 0;
         display: flex;
