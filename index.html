@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="icon.png">
     <!-- Verknüpfung zur CSS-Datei -->
     <link rel="stylesheet" href="style.css">
-    <!-- Script zum Laden des gespeicherten Themes vor dem Rendern (verhindert Flackern) -->
+    <!-- Script zum Laden des gespeicherten Themes vor dem Rendern -->
     <script>
         const savedTheme = localStorage.getItem('site_theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -17,12 +17,18 @@
 <body>
 
     <header>
-        <!-- Theme-Umschalter oben im Header -->
+        <!-- Karton-Button oben links im Header -->
+        <div class="box-trigger">
+            <button onclick="toggleIdeaBox()" title="Ideen-Karton öffnen">📦</button>
+        </div>
+
+        <!-- Theme-Umschalter oben rechts im Header -->
         <div class="theme-switcher">
             <button onclick="setTheme('dark')" title="Dark Mode">🌃</button>
             <button onclick="setTheme('dimmed')" title="Gedimmter Modus">🌁</button>
             <button onclick="setTheme('light')" title="Light Mode">🏙️</button>
         </div>
+
         <div class="header-content">
             <h1>Shau-Mi-Niuw</h1>
             <p>Innovation, Inspiration & Out-of-the-box-Thinking</p>
@@ -33,9 +39,9 @@
     <div class="mobile-menu-container">
         <select id="mobileMenu" onchange="navigateMobile(this.value)">
             <option value="home" selected>Startseite</option>
-            <option value="quitschingen">Quitschingen</option>
             <option value="textures">MC Java Texturpakete</option>
             <option value="coding">Programmieren mit KI</option>
+            <option value="quitschingen">Quitschingen</option>
             <option value="about">Über uns</option>
         </select>
     </div>
@@ -53,12 +59,28 @@
             <h3>Menü</h3>
             <ul>
                 <li><a href="#" onclick="showContent('home')">Startseite</a></li>
-                <li><a href="#" onclick="showContent('quitschingen')">Quitschingen</a></li>
                 <li><a href="#" onclick="showContent('textures')">MC Java Texturpakete</a></li>
                 <li><a href="#" onclick="showContent('coding')">Programmieren mit KI</a></li>
+                <li><a href="#" onclick="showContent('quitschingen')">Quitschingen</a></li>
                 <li><a href="#" onclick="showContent('about')">Über uns</a></li>
             </ul>
         </aside>
+    </div>
+
+    <!-- Interaktiver Ideen-Karton Pop-up -->
+    <div id="ideaBoxContainer" class="idea-box-container hidden">
+        <div class="idea-box-content">
+            <button class="close-box-btn" onclick="toggleIdeaBox()">✖</button>
+            <div class="box-image-wrapper">
+                <img src="box.png" alt="Karton" class="box-img" onerror="this.style.display='none'; document.getElementById('boxFallbackEmoji').style.display='block';">
+                <span id="boxFallbackEmoji" class="box-fallback-emoji" style="display:none;">📦</span>
+            </div>
+            <div class="speech-bubble">
+                <span class="bubble-tag">💡 Inspiration aus dem Karton</span>
+                <p id="ideaText">Klicke auf den Karton für eine neue Idee!</p>
+                <button onclick="getRandomIdea()" class="next-idea-btn">🎲 Noch ein Spruch</button>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -67,7 +89,7 @@
                 <h4>Shau-Mi-Niuw</h4>
                 <p class="footer-desc">Immer auf der Suche nach frischen Ansätzen.</p>
             </div>
-            <!-- Exakte Social Media & Gaming Links mit Ziel-Verlinkungen -->
+            <!-- Exakte Social Media & Gaming Links -->
             <div class="footer-links">
                 <a href="https://youtube.com/@StullenSimi" target="_blank" title="YouTube">📺 YouTube (@StullenSimi)</a>
                 <a href="https://discord.com" target="_blank" title="Discord">💬 Discord (StullenSimi)</a>
@@ -80,9 +102,43 @@
         </div>
     </footer>
 
-    <!-- JavaScript für Inhalts-Wechsel, Passwortschutz, Theme-Verwaltung und Kopier-Funktion -->
+    <!-- JavaScript -->
     <script>
         let texturesUnlocked = false;
+
+        // Sammlung von Ideen, Mottos & Motivationen
+        const ideas = [
+            "Denke nicht in Grenzen, wo noch gar keine gezogen wurden.",
+            "Erfolg ist, wenn die eigene Phantasie Realität wird.",
+            "Out-of-the-box-Thinking: Wer immer der Herde folgt, sieht nur die Hintern der anderen.",
+            "Manchmal muss man die Regeln brechen, um etwas Völlig Neues zu erschaffen.",
+            "Deine Ideen sind der Treibstoff – die KI ist nur das Raumschiff.",
+            "In der Spiegelwelt ist das Unmögliche erst der Anfang.",
+            "Sei kein Zuschauer in deiner eigenen Welt – sei der Entwickler.",
+            "Ein kleiner Klick für dich, ein großer Sprung für deine Kreativität!",
+            "Wer Fehler macht, lernt. Wer nichts tut, bleibt stehen.",
+            "Mach es nicht einfach anders, mach es neu – Shau-Mi-Niuw!",
+            "Kreativität bedeutet nicht, Antworten zu kennen, sondern die richtigen Fragen zu stellen.",
+            "Jede große Reise beginnt mit einer einzigen Zeile Code."
+        ];
+
+        function toggleIdeaBox() {
+            const box = document.getElementById('ideaBoxContainer');
+            if (box.classList.contains('hidden')) {
+                getRandomIdea();
+                box.classList.remove('hidden');
+                box.classList.add('visible');
+            } else {
+                box.classList.remove('visible');
+                box.classList.add('hidden');
+            }
+        }
+
+        function getRandomIdea() {
+            const ideaText = document.getElementById('ideaText');
+            const randomIndex = Math.floor(Math.random() * ideas.length);
+            ideaText.innerText = ideas[randomIndex];
+        }
 
         function copyPrompt(buttonElement) {
             const codeBlock = buttonElement.previousElementSibling;
@@ -116,28 +172,23 @@
                     <p>Willkommen auf der offiziellen Plattform für kreative Projekte und Downloads.</p>
                     <p>Wähle im Menü eine Option aus, um zu navigieren.</p>
                 `;
-            } else if (page === 'quitschingen') {
-                main.innerHTML = `
-                    <h2>Quitschingen</h2>
-                    <p>Quitschingen ist ein Planet – genauer gesagt der Jupiter – eingebettet in ein völlig neu erfundenes Universum namens <strong>Die Spiegelwelt</strong>.</p>
-                    
-                    <div class="tutorial-step">
-                        <h3>Über die Welt</h3>
-                        <p>Hier entsteht der Raum für dieses einzigartige Universum und seine Besonderheiten.</p>
-                    </div>
-
-                    <div class="tutorial-step">
-                        <h3>Die Sprache</h3>
-                        <p>Hier werden später alle Sachen zur Sprache sein.</p>
-                    </div>
-                `;
-            } else if (page === 'about') {
-                main.innerHTML = `
-                    <h2>Über uns</h2>
-                    <p>Der Name <strong>„Shau-Mi-Niuw“</strong> leitet sich lautmalerisch aus dem Englischen <em>„Show me new“</em> ab, was übersetzt <strong>„Zeige mir Neues“</strong> bedeutet.</p>
-                    <p>Hinter diesem Projekt steckt weit mehr als nur eine einfache Ansammlung von Downloads. Es ist ein kreativer Rückzugsort und eine Plattform, die gezielt für Innovation, Inspiration und echtes Out-of-the-box-Thinking steht.</p>
-                    <p>Das Hauptziel ist es, etablierte Wege zu hinterfragen, gewohnte Abläufe aufzubrechen und frische, einzigartige Ideen zu entwickeln sowie mit der Community zu teilen. Egal ob im Bereich Game Design, bei der Erstellung individueller Minecraft-Texturpakete oder durch kreative Content-Creation – hier dreht sich alles darum, den Blickwinkel zu erweitern und spannende, neue Projekte zum Leben zu erwecken.</p>
-                `;
+            } else if (page === 'textures') {
+                if (!texturesUnlocked) {
+                    main.innerHTML = `
+                        <h2>Minecraft Java Texturpakete</h2>
+                        <div class="password-container">
+                            <p>Dieser Bereich ist geschützt.</p>
+                            <p class="password-hint">Das Passwort findest du auf meinem YT-Kanal (@StullenSimi)!</p>
+                            <div class="password-input-group">
+                                <input type="password" id="accessPassword" placeholder="Passwort eingeben...">
+                                <button onclick="checkPassword()" class="download-btn">Entsperren</button>
+                            </div>
+                            <p id="errorMsg" style="color: #ef4444; margin-top: 10px; display: none; font-size: 0.9rem;">Falsches Passwort!</p>
+                        </div>
+                    `;
+                } else {
+                    renderTextures();
+                }
             } else if (page === 'coding') {
                 main.innerHTML = `
                     <h2>Programmieren mit KI: Vom Ordner zur ersten Website</h2>
@@ -213,23 +264,28 @@
                         <p style="margin-top: 15px; color: var(--accent-color);"><strong>Herzlichen Glückwunsch – deine erste Website ist fertig und nach wenigen Augenblicken über den dort angezeigten Link weltweit erreichbar!</strong></p>
                     </div>
                 `;
-            } else if (page === 'textures') {
-                if (!texturesUnlocked) {
-                    main.innerHTML = `
-                        <h2>Minecraft Java Texturpakete</h2>
-                        <div class="password-container">
-                            <p>Dieser Bereich ist geschützt.</p>
-                            <p class="password-hint">Das Passwort findest du auf meinem YT-Kanal (@StullenSimi)!</p>
-                            <div class="password-input-group">
-                                <input type="password" id="accessPassword" placeholder="Passwort eingeben...">
-                                <button onclick="checkPassword()" class="download-btn">Entsperren</button>
-                            </div>
-                            <p id="errorMsg" style="color: #ef4444; margin-top: 10px; display: none; font-size: 0.9rem;">Falsches Passwort!</p>
-                        </div>
-                    `;
-                } else {
-                    renderTextures();
-                }
+            } else if (page === 'quitschingen') {
+                main.innerHTML = `
+                    <h2>Quitschingen</h2>
+                    <p>Quitschingen ist ein Planet – genauer gesagt der Jupiter – eingebettet in ein völlig neu erfundenes Universum namens <strong>Die Spiegelwelt</strong>.</p>
+                    
+                    <div class="tutorial-step">
+                        <h3>Über die Welt</h3>
+                        <p>Hier entsteht der Raum für dieses einzigartige Universum und seine Besonderheiten.</p>
+                    </div>
+
+                    <div class="tutorial-step">
+                        <h3>Die Sprache</h3>
+                        <p>Hier werden später alle Sachen zur Sprache sein.</p>
+                    </div>
+                `;
+            } else if (page === 'about') {
+                main.innerHTML = `
+                    <h2>Über uns</h2>
+                    <p>Der Name <strong>„Shau-Mi-Niuw“</strong> leitet sich lautmalerisch aus dem Englischen <em>„Show me new“</em> ab, was übersetzt <strong>„Zeige mir Neues“</strong> bedeutet.</p>
+                    <p>Hinter diesem Projekt steckt weit mehr als nur eine einfache Ansammlung von Downloads. Es ist ein kreativer Rückzugsort und eine Plattform, die gezielt für Innovation, Inspiration und echtes Out-of-the-box-Thinking steht.</p>
+                    <p>Das Hauptziel ist es, etablierte Wege zu hinterfragen, gewohnte Abläufe aufzubrechen und frische, einzigartige Ideen zu entwickeln sowie mit der Community zu teilen. Egal ob im Bereich Game Design, bei der Erstellung individueller Minecraft-Texturpakete oder durch kreative Content-Creation – hier dreht sich alles darum, den Blickwinkel zu erweitern und spannende, neue Projekte zum Leben zu erwecken.</p>
+                `;
             }
         }
 
@@ -252,8 +308,6 @@
                 <p>Hier steht eine Übersicht aller verfügbaren Texturpakete zum direkten Download bereit:</p>
                 
                 <div id="textureList" style="margin-top: 20px;">
-                    
-                    <!-- 1. NewRedstoneLamps 1 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 1)</h3>
@@ -261,8 +315,6 @@
                         </div>
                         <a href="1.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- 2. NewRedstoneLamps 2 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 2)</h3>
@@ -270,8 +322,6 @@
                         </div>
                         <a href="2.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- 3. NewRedstoneLamps 3 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 3)</h3>
@@ -279,8 +329,6 @@
                         </div>
                         <a href="3.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- 4. NewRedstoneLamps 4 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 4)</h3>
@@ -288,8 +336,6 @@
                         </div>
                         <a href="4.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- 5. NewRedstoneLamps 5 -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>New Redstone Lamps (Variante 5)</h3>
@@ -297,8 +343,6 @@
                         </div>
                         <a href="5.NewRedstoneLamps-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- Apple Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Apple Hungerbar</h3>
@@ -306,8 +350,6 @@
                         </div>
                         <a href="AppleHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- Beetroot Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Beetroot Hungerbar</h3>
@@ -315,8 +357,6 @@
                         </div>
                         <a href="BeetrootHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- Potion Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Potion Hungerbar</h3>
@@ -324,8 +364,6 @@
                         </div>
                         <a href="PotionHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- Slimecraft -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Slimecraft</h3>
@@ -333,8 +371,6 @@
                         </div>
                         <a href="Slimecraft-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
-                    <!-- Stew Hungerbar -->
                     <div class="download-box">
                         <div class="download-info">
                             <h3>Stew Hungerbar</h3>
@@ -342,7 +378,6 @@
                         </div>
                         <a href="StewHungerbar-StullenSimi.zip" class="download-btn" download>📥 Herunterladen</a>
                     </div>
-
                 </div>
             `;
         }
