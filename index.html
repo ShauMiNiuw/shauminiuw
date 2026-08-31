@@ -17,7 +17,7 @@
 <body>
 
     <header>
-        <!-- Theme-Umschalter oben im Header (Dimm-Button und Light-Button getauscht) -->
+        <!-- Theme-Umschalter oben im Header -->
         <div class="theme-switcher">
             <button onclick="setTheme('dark')" title="Dark Mode">🌃</button>
             <button onclick="setTheme('dimmed')" title="Gedimmter Modus">🌁</button>
@@ -124,7 +124,7 @@
             } else if (page === 'coding') {
                 main.innerHTML = `
                     <h2>Programmieren mit KI: Vom Ordner zur ersten Website</h2>
-                    <p>In diesem ausführlichen Schritt-für-Schritt-Tutorial erfährst du, wie du ganz ohne Vorkenntnisse deine eigene Website aufbaust und dabei von Künstlicher Intelligenz unterstützt wirst.</p>
+                    <p>In diesem ausführlichen Schritt-für-Schritt-Tutorial erfährst du, wie du ganz ohne Vorkenntnisse deine eigene Website aufbaust und diese am Ende sogar kostenlos im Internet veröffentlichst.</p>
                     
                     <div class="tutorial-step">
                         <h3>Schritt 1: Den Projekt-Ordner erstellen</h3>
@@ -133,7 +133,7 @@
 
                     <div class="tutorial-step">
                         <h3>Schritt 2: Dateien mit dem Windows-Editor anlegen</h3>
-                        <p>Öffne den Windows-Editor (Editor / Notepad) und erstelle darin zwei grundlegende Dateien:</p>
+                        <p>Öffne den Windows-Editor (Notepad) und erstelle darin zwei grundlegende Dateien:</p>
                         <ul>
                             <li>Speichere die erste Datei in deinem Ordner unter dem exakten Namen: <code>index.html</code> (Das ist das Gerüst und der Inhalt).</li>
                             <li>Speichere die zweite Datei ebenfalls im selben Ordner unter dem Namen: <code>style.css</code> (Das ist das Design für Farben und Layout).</li>
@@ -146,42 +146,54 @@
                     </div>
 
                     <div class="tutorial-step">
-                        <h3>Schritt 4: KI-Prompts nutzen & Code einfügen</h3>
-                        <p>Öffne nun eine Top-KI (wie <strong>Gemini</strong>, <strong>ChatGPT</strong> oder <strong>Claude</strong>). Kopiere dir einen der folgenden Prompts per Klick, schicke ihn an die KI und lass dir den Code erstellen.</p>
+                        <h3>Schritt 4: Standardisierte KI-Prompts nutzen & Code einfügen</h3>
+                        <p>Öffne eine Top-KI (wie <strong>Gemini</strong>, <strong>ChatGPT</strong> oder <strong>Claude</strong>). Kopiere dir einen der folgenden standardisierten Prompts per Klick, passe ihn bei Bedarf an und lass dir den Code erstellen.</p>
                         <p><strong>So fügst du den Code richtig ein:</strong></p>
                         <ul>
                             <li>Öffne deine <code>index.html</code> (oder <code>style.css</code>) im Editor.</li>
-                            <li>Drücke auf deiner Tastatur <strong>Strg + A</strong>, um den gesamten eventuell vorhandenen alten Text zu markieren.</li>
+                            <li>Drücke auf deiner Tastatur <strong>Strg + A</strong>, um den gesamten Text zu markieren.</li>
                             <li>Drücke <strong>Strg + V</strong>, um den neuen Code der KI einzufügen.</li>
                             <li>Drücke zum Schluss <strong>Strg + S</strong>, um die Datei abzuspeichern.</li>
                         </ul>
                         
                         <div class="prompt-box" style="margin-top: 15px;">
-                            <p><strong>Prompt 1: Komplettes Website-Gerüst erstellen</strong></p>
-                            <code>Erstelle mir den kompletten Code für eine moderne, schicke Website. Ich brauche einmal den Code für die index.html und einmal für die style.css. Die Website soll eine schöne Startseite, einen Info-Bereich und eine Sektion mit Download-Boxen haben. Achte darauf, dass der Code sauber, fehlerfrei und übersichtlich ist, damit ich ihn direkt in meine Dateien kopieren kann.</code>
+                            <p><strong>Standard-Prompt 1: Allgemeine Website erstellen lassen</strong></p>
+                            <code>Erstelle mir den kompletten Code für eine moderne, schicke Website. Ich brauche einmal den Code für die index.html und einmal für die style.css. Die Website soll eine ansprechende Startseite und einen Info-Bereich enthalten. (Optional: Füge hier eigene Wünsche ein, z.B. einen Blog oder eine Projekt-Übersicht). Achte darauf, dass der Code sauber, fehlerfrei und übersichtlich ist, damit ich ihn direkt in meine Dateien kopieren kann.</code>
                             <button onclick="copyPrompt(this)" class="copy-btn">📋 Prompt kopieren</button>
                         </div>
 
                         <div class="prompt-box" style="margin-top: 15px;">
-                            <p><strong>Prompt 2: Bestehenden Code erweitern / anpassen</strong></p>
-                            <code>Hier ist mein aktueller Code meiner index.html und style.css [Füge deinen Code hier ein]. Ich möchte, dass du folgenden Bereich änderst oder hinzufügst: [Beschreibe hier deine Änderung, z.B. einen neuen Button einfügen oder Farben anpassen]. Gib mir den kompletten, aktualisierten Code aus.</code>
+                            <p><strong>Standard-Prompt 2: Bestehenden Code anpassen</strong></p>
+                            <code>Hier ist mein aktueller Code meiner index.html und style.css [Füge deinen Code hier ein]. Ich möchte, dass du folgenden Bereich änderst oder hinzufügst: [Beschreibe hier deine Änderung, z.B. eine neue Farbe oder einen neuen Menüpunkt]. Gib mir den kompletten, aktualisierten Code aus.</code>
                             <button onclick="copyPrompt(this)" class="copy-btn">📋 Prompt kopieren</button>
                         </div>
                     </div>
 
                     <div class="tutorial-step">
-                        <h3>Schritt 5: Lokal testen & interaktiv anpassen</h3>
-                        <p>Du kannst deine Website sofort testen, ohne sie ins Internet hochzuladen:</p>
+                        <h3>Schritt 5: Lokal testen & verfeinern</h3>
+                        <p>Du kannst deine Website sofort testen, bevor sie online geht:</p>
                         <ul>
-                            <li>Mache einfach einen <strong>Doppelklick</strong> auf deine <code>index.html</code>-Datei im Ordner. Sie öffnet sich direkt in deinem Standard-Webbrowser (z. B. Chrome, Edge oder Firefox).</li>
-                            <li>Schau dir an, wie sie aussieht und wirkt.</li>
-                            <li>Wenn dir etwas nicht gefällt oder du etwas umbauen möchtest, geh zurück zur KI, nutze <strong>Prompt 2</strong> und beantrage gezielt weitere Veränderungen!</li>
+                            <li>Mache einen <strong>Doppelklick</strong> auf deine <code>index.html</code>-Datei im Ordner. Sie öffnet sich direkt in deinem Browser.</li>
+                            <li>Schau dir an, wie sie wirkt. <strong>Wichtig:</strong> Sei erst mit dem grundlegenden Design und Inhalt zufrieden, bevor du zum nächsten Schritt übergehst. Wenn du später etwas änderst, musst du die Dateien sonst jedes Mal neu hochladen!</li>
+                            <li>Falls du Änderungen brauchst, nutze Prompt 2 bei der KI, füge den neuen Code per <code>Strg + A</code> / <code>Strg + V</code> ein und speichere mit <code>Strg + S</code> ab.</li>
                         </ul>
                     </div>
 
                     <div class="tutorial-step">
-                        <h3>Schritt 6: Ausblick (Online stellen)</h3>
-                        <p>Wenn deine Website lokal perfekt ist, kannst du sie im Anschluss komplett kostenlos über Dienste wie <strong>GitHub Pages</strong> im Internet veröffentlichen, damit auch andere sie besuchen können!</p>
+                        <h3>Schritt 6: Kostenlos online stellen mit GitHub Pages</h3>
+                        <p>Wenn deine Website perfekt ist, bringen wir sie ins Internet:</p>
+                        <ul>
+                            <li>Gehe auf <a href="https://github.com" target="_blank" style="color: var(--accent-color);">github.com</a> und erstelle dir einen kostenlosen Account (falls noch nicht geschehen).</li>
+                            <li>Klicke oben rechts auf das <strong>„+“</strong> Symbol und wähle <strong>„New repository“</strong> (neues Projekt).</li>
+                            <li>Gib deinem Repository einen Namen (z.B. <code>meine-erste-website</code>), wähle <strong>Public</strong> (öffentlich) aus und klicke unten auf <strong>„Create repository“</strong>.</li>
+                            <li>Klicke auf der folgenden Seite auf den blauen Text <strong>„upload an existing file“</strong>.</li>
+                            <li>Ziehe nun alle deine Projekt-Dateien (<code>index.html</code>, <code>style.css</code> und deine <code>icon.png</code>) gebündelt in das Browserfenster.</li>
+                            <li>Klicke ganz unten auf den grünen Button <strong>„Commit changes“</strong>.</li>
+                            <li>Gehe nun oben im Repository auf den Reiter <strong>„Settings“</strong> (Einstellungen).</li>
+                            <li>Klicke links in der Menüleiste auf <strong>„Pages“</strong>.</li>
+                            <li>Unter dem Punkt *Build and deployment* / *Branch* klickst du auf das Menü mit der Aufschrift *None*, änderst es auf <strong>main</strong> und klickst rechts daneben auf <strong>Save</strong>.</li>
+                        </ul>
+                        <p style="margin-top: 15px; color: var(--accent-color);"><strong>Herzlichen Glückwunsch – deine erste Website ist fertig und nach wenigen Augenblicken über den dort angezeigten Link weltweit erreichbar!</strong></p>
                     </div>
                 `;
             } else if (page === 'textures') {
