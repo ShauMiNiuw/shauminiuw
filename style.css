@@ -306,6 +306,22 @@ main p {
     color: #0f1117;
 }
 
+.box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zentriert Text und Bild zueinander */
+}
+
+.box-titel {
+  color: #BB8E51;
+  font-size: 0.85rem;   /* Kleine Schriftgröße */
+  line-height: 1.2;     /* Kompakter Zeilenabstand für die 2 Zeilen */
+  text-align: center;
+  margin: 0 0 8px 0;    /* Kleiner Abstand nach unten zum Bild */
+  text-transform: uppercase; /* Optional: Wirkt stylisch bei kleinen Überschriften */
+  letter-spacing: 1px;  /* Leicht erweiterter Zeichenabstand */
+}
+
 /* ==========================================================================
    Tutorial & Content Styling
    ========================================================================== */

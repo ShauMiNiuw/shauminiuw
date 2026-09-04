@@ -63,13 +63,16 @@
         </aside>
     </div>
 
-    <div id="ideaBoxContainer" class="idea-box-container hidden" role="dialog" aria-labelledby="ideaBoxTitle">
+<div id="ideaBoxContainer" class="idea-box-container hidden" role="dialog" aria-labelledby="ideaBoxTitle">
         <div class="idea-box-content">
             <button class="close-box-btn" onclick="toggleIdeaBox()" aria-label="Schließen">✖</button>
+            
             <div class="box-image-wrapper">
+                <p class="box-titel">Inspiration<br>aus der Box</p>
                 <img src="box.png" alt="Karton" class="box-img" onerror="this.style.display='none'; document.getElementById('boxFallbackEmoji').style.display='block';">
                 <span id="boxFallbackEmoji" class="box-fallback-emoji" style="display:none;">📦</span>
             </div>
+
             <div class="speech-bubble">
                 <span id="ideaBoxTitle" class="bubble-tag">💡 Inspiration aus dem Karton</span>
                 <p id="ideaText">Klicke auf den Karton für eine neue Idee!</p>
