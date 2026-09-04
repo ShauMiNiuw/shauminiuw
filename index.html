@@ -6,7 +6,8 @@
     <title>Shau-Mi-Niuw</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="style.css">
-    <script>
+<script src="spruch.js"></script>    
+<script>
         const savedTheme = localStorage.getItem('site_theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
@@ -98,38 +99,28 @@
     <script>
         let texturesUnlocked = false;
 
-        const ideas = [
-            "Denke nicht in Grenzen, wo noch gar keine gezogen wurden.",
-            "Erfolg ist, wenn die eigene Phantasie Realität wird.",
-            "Out-of-the-box-Thinking: Wer immer der Herde folgt, sieht nur die Hintern der anderen.",
-            "Manchmal muss man die Regeln brechen, um etwas Völlig Neues zu erschaffen.",
-            "Deine Ideen sind der Treibstoff – die KI ist nur das Raumschiff.",
-            "In der Spiegelwelt ist das Unmögliche erst der Anfang.",
-            "Sei kein Zuschauer in deiner eigenen Welt – sei der Entwickler.",
-            "Ein kleiner Klick für dich, ein großer Sprung für deine Kreativität!",
-            "Wer Fehler macht, lernt. Wer nichts tut, bleibt stehen.",
-            "Mach es nicht einfach anders, mach es neu – Shau-Mi-Niuw!",
-            "Kreativität bedeutet nicht, Antworten zu kennen, sondern die richtigen Fragen zu stellen.",
-            "Jede große Reise beginnt mit einer einzigen Zeile Code."
-        ];
+function toggleIdeaBox() {
+    const box = document.getElementById('ideaBoxContainer');
+    if (box.classList.contains('hidden')) {
+        getRandomIdea();
+        box.classList.remove('hidden');
+        box.classList.add('visible');
+    } else {
+        box.classList.remove('visible');
+        box.classList.add('hidden');
+    }
+}
 
-        function toggleIdeaBox() {
-            const box = document.getElementById('ideaBoxContainer');
-            if (box.classList.contains('hidden')) {
-                getRandomIdea();
-                box.classList.remove('hidden');
-                box.classList.add('visible');
-            } else {
-                box.classList.remove('visible');
-                box.classList.add('hidden');
-            }
-        }
-
-        function getRandomIdea() {
-            const ideaText = document.getElementById('ideaText');
-            const randomIndex = Math.floor(Math.random() * ideas.length);
-            ideaText.innerText = ideas[randomIndex];
-        }
+// Greift jetzt direkt auf das 'sprueche'-Array aus spruch.js zu
+function getRandomIdea() {
+    const ideaText = document.getElementById('ideaText');
+    if (typeof sprueche !== 'undefined' && sprueche.length > 0) {
+        const randomIndex = Math.floor(Math.random() * sprueche.length);
+        ideaText.innerText = sprueche[randomIndex];
+    } else {
+        ideaText.innerText = "Fehler: Die Datei 'spruch.js' wurde nicht gefunden.";
+    }
+}
 
         function copyPrompt(buttonElement) {
             const codeBlock = buttonElement.previousElementSibling;
