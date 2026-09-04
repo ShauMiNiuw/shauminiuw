@@ -5,7 +5,7 @@
 /* 1. DARK MODE: Tiefes Hardware-Anthrazit */
 :root[data-theme="dark"] {
     --primary-color: #0f172a;       
-    --accent-color: #94a3b8;        
+    --accent-color: #38bdf8;        
     --bg-color: #090a0f;            
     --card-bg: #13161f;             
     --text-color: #f8fafc;          
@@ -14,27 +14,27 @@
     --border-color: rgba(255, 255, 255, 0.08);
 }
 
-/* 2. LIGHT MODE: Platin-Aluminium */
+/* 2. LIGHT MODE: Frisches Hellblau & Platin */
 :root[data-theme="light"] {
-    --primary-color: #334155;       
-    --accent-color: #475569;        
-    --bg-color: #f1f5f9;            
+    --primary-color: #e6f7fc;       
+    --accent-color: #27C2F5;        
+    --bg-color: #f4f6f8;            
     --card-bg: #ffffff;             
-    --text-color: #1e293b;          
-    --text-secondary: #64748b;      
-    --hover-color: #0284c7;
+    --text-color: #1c2024;          
+    --text-secondary: #57606a;      
+    --hover-color: #27C2F5;
     --border-color: rgba(0, 0, 0, 0.08);
 }
 
-/* 3. GEDIMMTER MODUS: Mattes Grau-Blau */
+/* 3. GEDIMMTER MODUS: Mattes Blaugrau (#5F747A) */
 :root[data-theme="dimmed"] {
-    --primary-color: #283040;       
-    --accent-color: #a3b1c2;        
-    --bg-color: #1e232e;            
-    --card-bg: #283040;             
-    --text-color: #ecf0f3;          
-    --text-secondary: #b0bec5;      
-    --hover-color: #7dd3fc;
+    --primary-color: #243033;       
+    --accent-color: #5F747A;        
+    --bg-color: #1e2628;            
+    --card-bg: #2b3639;             
+    --text-color: #e1e7e8;          
+    --text-secondary: #9eb1b6;      
+    --hover-color: #728b93;
     --border-color: rgba(255, 255, 255, 0.1);
 }
 
