@@ -111,12 +111,21 @@ function toggleIdeaBox() {
     }
 }
 
-// Greift jetzt direkt auf das 'sprueche'-Array aus spruch.js zu
 function getRandomIdea() {
     const ideaText = document.getElementById('ideaText');
+    const bubbleTag = document.getElementById('ideaBoxTitle');
+
     if (typeof sprueche !== 'undefined' && sprueche.length > 0) {
         const randomIndex = Math.floor(Math.random() * sprueche.length);
-        ideaText.innerText = sprueche[randomIndex];
+        const item = sprueche[randomIndex];
+
+        if (typeof item === 'object') {
+            ideaText.innerText = item.text;
+            if (bubbleTag) bubbleTag.innerText = "💡 " + item.kat;
+        } else {
+            ideaText.innerText = item;
+            if (bubbleTag) bubbleTag.innerText = "💡 Inspiration";
+        }
     } else {
         ideaText.innerText = "Fehler: Die Datei 'spruch.js' wurde nicht gefunden.";
     }
