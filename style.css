@@ -239,12 +239,10 @@ main p {
 }
 
 .box-image-wrapper {
-    flex-shrink: 0;
-    width: 75px;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100%;
 }
 
 .box-img {
@@ -313,13 +311,14 @@ main p {
 }
 
 .box-titel {
-  color: #BB8E51;
-  font-size: 0.85rem;   /* Kleine Schriftgröße */
-  line-height: 1.2;     /* Kompakter Zeilenabstand für die 2 Zeilen */
+  color: #BB8E51 !important;
+  -webkit-text-fill-color: #BB8E51 !important; /* Wichtig für Safari / iOS */
+  font-size: 0.85rem;
+  line-height: 1.2;
   text-align: center;
-  margin: 0 0 8px 0;    /* Kleiner Abstand nach unten zum Bild */
-  text-transform: uppercase; /* Optional: Wirkt stylisch bei kleinen Überschriften */
-  letter-spacing: 1px;  /* Leicht erweiterter Zeichenabstand */
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* ==========================================================================
